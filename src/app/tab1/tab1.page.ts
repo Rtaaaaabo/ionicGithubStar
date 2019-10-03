@@ -26,4 +26,12 @@ export class Tab1Page {
     }
   }
 
+  onlink() {
+    console.log('OnLink');
+  }
+
+  onMark() {
+    console.log('OnMark');
+  }
+
 }
