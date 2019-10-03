@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GithubApiService } from '../services/github-api.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private githubService: GithubApiService) {}
+
+  ngOnInit(): void {
+    const query = 'Ruby';
+    this.githubService.fetchItemsGithub(query).subscribe(data => {
+      console.log(data);
+    });
+  }
 
 }
