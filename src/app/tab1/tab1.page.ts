@@ -17,4 +17,13 @@ export class Tab1Page {
     });
   }
 
+  filterdItems(ev) {
+    console.log(ev.detail.value);
+    if (ev.detail.value) {
+      this.githubService.fetchItemsGithub(ev.detail.value).subscribe(data => {
+        console.log(data);
+      });
+    }
+  }
+
 }
