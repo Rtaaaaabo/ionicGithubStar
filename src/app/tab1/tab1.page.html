@@ -4,6 +4,7 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar
+      [value]="itemSearch"
       (ionChange)="filterdItems($event)"
       debounce="500"
     ></ion-searchbar>

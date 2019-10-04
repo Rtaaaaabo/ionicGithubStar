@@ -8,12 +8,22 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'search',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../search/search.module').then(m => m.SearchPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab1',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
           }
         ]
       },
@@ -29,14 +39,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/search',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/search',
     pathMatch: 'full'
   }
 ];
@@ -45,4 +55,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

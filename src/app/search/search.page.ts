@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SearchPage implements OnInit {
   itemSearch: string;
 
-  constructor() {
+  constructor(private router: Router) {
     this.itemSearch = '';
   }
 
@@ -18,6 +19,12 @@ export class SearchPage implements OnInit {
 
   processForm() {
     console.log(this.itemSearch);
+    const navigationExtras: NavigationExtras = {
+      state: {
+        strItem: this.itemSearch
+      }
+    };
+    this.router.navigate(['tabs/tab1'], navigationExtras);
   }
 
 }
