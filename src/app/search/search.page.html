@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processForm()">
+  <form (ngSubmit)="processForm()" class="form-margin">
     <div class="ion-padding">
       <!-- <ion-input (ionInput)="handleInputKeyword($event)" placeholder="検索キーワード"></ion-input> -->
       <ion-input [(ngModel)]="itemSearch" placeholder="検索キーワード" name="searchItem"></ion-input>

@@ -20,8 +20,4 @@ export class SearchPage implements OnInit {
     console.log(this.itemSearch);
   }
 
-  handleInputKeyword(event) {
-    console.log(event);
-  }
-
 }
