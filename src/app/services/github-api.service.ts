@@ -13,10 +13,9 @@ export class GithubApiService {
 
   constructor(private http: HttpClient) { }
 
-  fetchItemsGithub(query: string): Observable<object> {
+  fetchItemsGithub(query: string) {
     let httpParams = new HttpParams();
     let httpHeaders = new HttpHeaders();
-    console.log(query);
     httpParams = httpParams.append('q', query);
     httpParams = httpParams.append('sort', 'stars');
     httpParams = httpParams.append('order', 'desc');

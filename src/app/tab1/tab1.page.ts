@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GithubApiService } from '../services/github-api.service';
 import { map, merge, mergeMap } from 'rxjs/operators';
+import { GithubApi } from '../interfaces/github';
 
 @Component({
   selector: 'app-tab1',
@@ -10,16 +11,19 @@ import { map, merge, mergeMap } from 'rxjs/operators';
 export class Tab1Page {
   itemsGithub;
 
-  constructor(private githubService: GithubApiService) { }
+  constructor(private githubService: GithubApiService) {
+    this.itemsGithub = {
+      incomplete_results: false,
+      total_count: 0,
+      items: []
+    };
+  }
 
   ngOnInit(): void {
     const query = 'Ruby';
-    this.githubService.fetchItemsGithub(query).pipe(
-      mergeMap(value => value.items)
-    )
-      .subscribe(data => {
-        this.itemsGithub = data;
-      });
+    this.githubService.fetchItemsGithub(query).subscribe(data => {
+      this.itemsGithub = data;
+    });
   }
 
   filterdItems(ev) {
