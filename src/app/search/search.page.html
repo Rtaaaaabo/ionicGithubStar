@@ -1,16 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processForm($event)">
+  <form (ngSubmit)="processForm()">
     <div class="ion-padding">
-      <ion-input (ionInput)="handleInputKeyword($event)" placeholder="検索キーワード"></ion-input>
+      <!-- <ion-input (ionInput)="handleInputKeyword($event)" placeholder="検索キーワード"></ion-input> -->
+      <ion-input [(ngModel)]="itemSearch" placeholder="検索キーワード" name="searchItem"></ion-input>
     </div>
     <div class="searchbutton">
-      <ion-button (click)="onClick()" expand="block" type="submit" class="ion-no-margin">検索</ion-button>
+      <ion-button expand="block" type="submit" class="ion-no-margin">検索</ion-button>
     </div>
   </form>
 </ion-content>

@@ -6,19 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
+  itemSearch: string;
 
-  constructor() { }
+  constructor() {
+    this.itemSearch = '';
+  }
 
   ngOnInit() {
     console.log('search Page');
   }
 
-  onClick(){
-    console.log('onClick');
-  }
-
-  processForm(event) {
-    console.log(event);
+  processForm() {
+    console.log(this.itemSearch);
   }
 
   handleInputKeyword(event) {
