@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form onsubmit="processForm(event)">
+  <form (ngSubmit)="processForm($event)">
     <div class="ion-padding">
-      <ion-input ionInput="handleInputKeyword(event)" placeholder="検索キーワード"></ion-input>
+      <ion-input (ionInput)="handleInputKeyword($event)" placeholder="検索キーワード"></ion-input>
     </div>
     <div class="searchbutton">
-      <ion-button expand="block" type="submit" class="ion-no-margin">検索</ion-button>
+      <ion-button (click)="onClick()" expand="block" type="submit" class="ion-no-margin">検索</ion-button>
     </div>
   </form>
 </ion-content>

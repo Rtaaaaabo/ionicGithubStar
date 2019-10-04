@@ -13,6 +13,10 @@ export class SearchPage implements OnInit {
     console.log('search Page');
   }
 
+  onClick(){
+    console.log('onClick');
+  }
+
   processForm(event) {
     console.log(event);
   }
