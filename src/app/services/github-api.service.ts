@@ -16,7 +16,9 @@ export class GithubApiService {
   fetchItemsGithub(query: string) {
     let httpParams = new HttpParams();
     let httpHeaders = new HttpHeaders();
-    httpParams = httpParams.append('q', query);
+    if (query !== '') {
+      httpParams = httpParams.append('q', query);
+    }
     httpParams = httpParams.append('sort', 'stars');
     httpParams = httpParams.append('order', 'desc');
     httpHeaders = httpHeaders.append('Accept', 'application/vnd.github.mercy-preview+json');

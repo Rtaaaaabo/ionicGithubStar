@@ -20,7 +20,7 @@ export class Tab1Page {
   }
 
   ngOnInit(): void {
-    const query = 'Ruby';
+    const query = '';
     this.githubService.fetchItemsGithub(query).subscribe(data => {
       this.itemsGithub = data;
     });
