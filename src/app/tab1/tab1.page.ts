@@ -20,6 +20,7 @@ export class Tab1Page {
   }
 
   ngOnInit(): void {
+    console.log('tab1');
     const query = '';
     this.githubService.fetchItemsGithub(query).subscribe(data => {
       this.itemsGithub = data;
