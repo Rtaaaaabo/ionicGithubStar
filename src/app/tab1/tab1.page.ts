@@ -37,19 +37,20 @@ export class Tab1Page implements OnInit {
     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
       this.itemsFetchGithub = data;
       this.itemsView = this.itemsFetchGithub.items;
-      this.countPage = 1;
+      // this.countPage = 2;
     });
   }
 
-  // filterdItems(ev) {
-  //   if (ev.detail.value) {
-  //     this.itemSearch = ev.detail.value;
-  //     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
-  //       this.itemsGithub.push(data);
-  //     });
-  //     this.countPage = 1;
-  //   }
-  // }
+  filterdItems(ev) {
+    if (ev.detail.value) {
+      this.countPage = 1;
+      this.itemSearch = ev.detail.value;
+      this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
+        this.itemsFetchGithub = data;
+        this.itemsView = this.itemsFetchGithub.items;
+      });
+    }
+  }
 
   onlink() {
     console.log('OnLink');
