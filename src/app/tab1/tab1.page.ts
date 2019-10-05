@@ -60,20 +60,21 @@ export class Tab1Page implements OnInit {
     console.log('OnMark');
   }
 
-  // loadItems(ev, item) {
-  //   setTimeout(() => {
-  //     console.log(this.countPage);
-  //     ev.target.complete();
-  //     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe((data) => {
-  //       this.itemsGithub.push(data);
-  //     });
-  //     this.countPage++;
-  //     // App logic to determine if all data is loaded
-  //     // and disable the infinite scroll
-  //     // if (data.length === 1000) {
-  //     //   ev.target.disabled = true;
-  //     // }
-  //   }, 500);
-  // }
+  loadItems(ev) {
+    setTimeout(() => {
+      this.countPage++;
+      console.log(this.countPage);
+      ev.target.complete();
+      this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe((data) => {
+        this.itemsFetchGithub = data;
+        this.itemsView = this.itemsView.concat(this.itemsFetchGithub.items);
+      });
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      // if (data.length === 1000) {
+      //   ev.target.disabled = true;
+      // }
+    }, 500);
+  }
 
 }
