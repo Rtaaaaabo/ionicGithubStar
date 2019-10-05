@@ -37,7 +37,6 @@ export class Tab1Page implements OnInit {
     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
       this.itemsFetchGithub = data;
       this.itemsView = this.itemsFetchGithub.items;
-      // this.countPage = 2;
     });
   }
 
@@ -63,18 +62,15 @@ export class Tab1Page implements OnInit {
   loadItems(ev) {
     setTimeout(() => {
       this.countPage++;
-      console.log(this.countPage);
       ev.target.complete();
       this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe((data) => {
         this.itemsFetchGithub = data;
         this.itemsView = this.itemsView.concat(this.itemsFetchGithub.items);
       });
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      // if (data.length === 1000) {
-      //   ev.target.disabled = true;
-      // }
-    }, 500);
+      if (this.itemsFetchGithub.total_count === this.itemsView.length) {
+        ev.target.disabled = true;
+      }
+    }, 1000);
   }
 
 }
