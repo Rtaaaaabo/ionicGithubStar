@@ -25,9 +25,6 @@
         </ion-label>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option (click)="onlink()">
-          <ion-icon slot="icon-only" name="md-link"></ion-icon>
-        </ion-item-option>
         <ion-item-option (click)="onMark()">
           <ion-icon slot="icon-only" name="md-bookmark"></ion-icon>
         </ion-item-option>
@@ -35,10 +32,7 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-infinite-scroll
-    threshold="100px"
-    (ionInfinite)="loadItems($event, item)"
-  >
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadItems($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="読込中..."
