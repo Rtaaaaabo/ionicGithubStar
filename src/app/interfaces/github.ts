@@ -3,3 +3,4 @@ export interface GithubApi {
     total_count: number;
     items: Array<Object>;
 }
+

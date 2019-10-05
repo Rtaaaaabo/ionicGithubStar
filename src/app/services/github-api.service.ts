@@ -13,12 +13,14 @@ export class GithubApiService {
 
   constructor(private http: HttpClient) { }
 
-  fetchItemsGithub(query: string) {
+  fetchItemsGithub(query: string, count: number): Observable<any> {
+    console.log(count);
     let httpParams = new HttpParams();
     let httpHeaders = new HttpHeaders();
     httpParams = httpParams.append('q', query);
     httpParams = httpParams.append('sort', 'stars');
     httpParams = httpParams.append('order', 'desc');
+    httpParams = httpParams.append('page', String(count));
     httpHeaders = httpHeaders.append('Accept', 'application/vnd.github.mercy-preview+json');
     const options = {
       headers: httpHeaders,

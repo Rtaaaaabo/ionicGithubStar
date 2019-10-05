@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GithubApiService } from '../services/github-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
 import { map, merge, mergeMap } from 'rxjs/operators';
 import { GithubApi } from '../interfaces/github';
 
@@ -9,45 +10,46 @@ import { GithubApi } from '../interfaces/github';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
+
+  @ViewChild(IonInfiniteScroll, { static: true }) infiniteScroll: IonInfiniteScroll;
   itemSearch: string;
-  itemsGithub;
+  itemsFetchGithub: GithubApi;
+  itemsView;
+  countPage: number;
+
 
   constructor(
     private githubService: GithubApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.itemsGithub = {
-      incomplete_results: false,
-      total_count: 0,
-      items: []
-    };
-    this.route.queryParams.subscribe(params => {
+    this.countPage = 1;
+    this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.itemSearch = this.router.getCurrentNavigation().extras.state.strItem;
       }
     });
-    console.log(this.itemSearch);
   }
 
   ngOnInit(): void {
-    console.log('tab1');
-    const query = '';
-    this.githubService.fetchItemsGithub(this.itemSearch).subscribe(data => {
-      this.itemsGithub = data;
+    console.log(this.itemSearch);
+    this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
+      this.itemsFetchGithub = data;
+      this.itemsView = this.itemsFetchGithub.items;
+      this.countPage = 1;
     });
   }
 
-  filterdItems(ev) {
-    console.log(ev.detail.value);
-    if (ev.detail.value) {
-      this.githubService.fetchItemsGithub(ev.detail.value).subscribe(data => {
-        this.itemsGithub = data;
-        console.log(this.itemsGithub);
-      });
-    }
-  }
+  // filterdItems(ev) {
+  //   if (ev.detail.value) {
+  //     this.itemSearch = ev.detail.value;
+  //     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
+  //       this.itemsGithub.push(data);
+  //     });
+  //     this.countPage = 1;
+  //   }
+  // }
 
   onlink() {
     console.log('OnLink');
@@ -56,5 +58,21 @@ export class Tab1Page {
   onMark() {
     console.log('OnMark');
   }
+
+  // loadItems(ev, item) {
+  //   setTimeout(() => {
+  //     console.log(this.countPage);
+  //     ev.target.complete();
+  //     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe((data) => {
+  //       this.itemsGithub.push(data);
+  //     });
+  //     this.countPage++;
+  //     // App logic to determine if all data is loaded
+  //     // and disable the infinite scroll
+  //     // if (data.length === 1000) {
+  //     //   ev.target.disabled = true;
+  //     // }
+  //   }, 500);
+  // }
 
 }
