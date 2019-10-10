@@ -14,7 +14,6 @@ export class GithubApiService {
   constructor(private http: HttpClient) { }
 
   fetchItemsGithub(query: string, count: number): Observable<any> {
-    console.log(count);
     let httpParams = new HttpParams();
     let httpHeaders = new HttpHeaders();
     httpParams = httpParams.append('q', query);
