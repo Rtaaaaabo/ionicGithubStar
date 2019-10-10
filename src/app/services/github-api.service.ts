@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { GithubApi } from '../interfaces/github';
+import { IGithubApi } from '../interfaces/github';
 import { Observable } from 'rxjs';
 
 const apiRootUrl = 'https://api.github.com/search/repositories';
