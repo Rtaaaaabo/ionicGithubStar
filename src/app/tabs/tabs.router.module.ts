@@ -36,11 +36,6 @@ const routes: Routes = [
               import('../tab2/tab2.module').then(m => m.Tab2PageModule)
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/search',
-        pathMatch: 'full'
       }
     ]
   },
