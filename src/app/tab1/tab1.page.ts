@@ -3,7 +3,7 @@ import { GithubApiService } from '../services/github-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
 import { map, merge, mergeMap } from 'rxjs/operators';
-import { GithubApi } from '../interfaces/github';
+import { IGithubApi } from '../interfaces/github';
 
 @Component({
   selector: 'app-tab1',
@@ -14,7 +14,7 @@ export class Tab1Page implements OnInit {
 
   @ViewChild(IonInfiniteScroll, { static: true }) infiniteScroll: IonInfiniteScroll;
   itemSearch: string;
-  itemsFetchGithub: GithubApi;
+  itemsFetchGithub: IGithubApi;
   itemsView;
   countPage: number;
 
@@ -34,6 +34,7 @@ export class Tab1Page implements OnInit {
 
   ngOnInit(): void {
     console.log(this.itemSearch);
+    this.itemSearch = 'Ruby';
     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
       this.itemsFetchGithub = data;
       this.itemsView = this.itemsFetchGithub.items;
