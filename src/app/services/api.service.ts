@@ -15,8 +15,21 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  postfavorite(postData: InterfaceApi): Observable<any> {
-    const body = postData as InterfaceApi;      // JSONファイルで渡す
-    return this.http.post(ApiRootUrl, body);
+  fetchFavoriteItems(): Observable<any> {
+    return this.http.get(`${ApiRootUrl}${ApiPath}`);
   }
+
+  fetchFavoriteItem(): Observable<any> {
+    return this.http.get(`${ApiRootUrl}${ApiPath}`);
+  }
+
+  postFavoriteItem(postData: InterfaceApi): Observable<any> {
+    const body = postData as InterfaceApi;      // JSONファイルで渡す
+    return this.http.post(`${ApiRootUrl}${ApiPath}`, body);
+  }
+
+  deleteFavoriteItem(): Observable<any> {
+    return this.http.delete(`${ApiRootUrl}${ApiPath}`);
+  }
+
 }
