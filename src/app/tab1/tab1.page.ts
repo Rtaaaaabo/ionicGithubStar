@@ -43,7 +43,7 @@ export class Tab1Page implements OnInit {
     });
   }
 
-  filterdItems(ev) {
+  filterdItems(ev): void {
     if (ev.detail.value) {
       this.countPage = 1;
       this.itemSearch = ev.detail.value;
@@ -54,7 +54,7 @@ export class Tab1Page implements OnInit {
     }
   }
 
-  onMark(item) {
+  onMark(item): void {
     const postData: InterfaceApi = {
       repositoryName: item.name,
       url: item.html_url,
@@ -70,7 +70,7 @@ export class Tab1Page implements OnInit {
     );
   }
 
-  loadItems(ev) {
+  loadItems(ev): void {
     setTimeout(() => {
       this.countPage++;
       ev.target.complete();
@@ -83,5 +83,4 @@ export class Tab1Page implements OnInit {
       }
     }, 1000);
   }
-
 }

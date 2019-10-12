@@ -18,6 +18,7 @@ export class Tab2Page implements OnInit {
     console.log('First View');
     this.apiService.fetchFavoriteItems().subscribe((items) => {
       this.itemsFavorite = items;
+      console.log(this.itemsFavorite);
     });
   }
 

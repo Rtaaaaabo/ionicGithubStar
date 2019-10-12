@@ -13,6 +13,6 @@ export interface InterfaceFavorite {
     url: string;
     description: string;
     language: string;
-    ownerAvatorUrl: string;
-    ownerLoginName: string;
+    owner_avator_url: string;
+    owner_login_name: string;
 }

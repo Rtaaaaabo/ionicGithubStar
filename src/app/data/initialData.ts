@@ -7,7 +7,7 @@ export const InitialFavoriteData: Array<InterfaceFavorite> = [
         url: '',
         description: '',
         language: '',
-        ownerAvatorUrl: '',
-        ownerLoginName: '',
+        owner_avator_url: '',
+        owner_login_name: '',
     }
 ];
