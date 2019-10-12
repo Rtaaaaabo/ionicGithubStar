@@ -11,23 +11,23 @@ export class Tab2Page implements OnInit {
   itemsFavorite = InitialFavoriteData as Array<InterfaceFavorite>;
 
   constructor(private apiService: ApiService) {
+    console.log('test');
   }
 
   ngOnInit() {
+    console.log('First View');
     this.apiService.fetchFavoriteItems().subscribe((items) => {
       this.itemsFavorite = items;
     });
   }
 
   onDelete(id: string) {
-    console.log(id);
     this.apiService.deleteFavoriteItem(id).subscribe(() => {
       for (let i = 0; i < this.itemsFavorite.length; i++) {
         if (this.itemsFavorite[i].id === id) {
           this.itemsFavorite.splice(i, 1);
         }
       }
-      console.log(this.itemsFavorite);
     });
   }
 }

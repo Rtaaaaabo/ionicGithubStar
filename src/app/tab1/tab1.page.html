@@ -17,10 +17,10 @@
       <ion-item>
         <ion-label>
           <h2>{{ item.name }}</h2>
-          <p>URL</p>
-          <p>description</p>
-          <p>language</p>
-          <p>owner</p>
+          <p>URL: {{ item.html_url }}</p>
+          <p>description: {{ item.description }}</p>
+          <p>language: {{ item.language }}</p>
+          <p>owner: {{ item.owner.login }}</p>
         </ion-label>
       </ion-item>
       <ion-item-options side="end">
