@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
 import { GithubApiService } from '../services/github-api.service';
 import { ApiService } from '../services/api.service';
-import { IonInfiniteScroll } from '@ionic/angular';
 import { IGithubApi } from '../interfaces/github';
 import { InterfaceApi } from '../interfaces/iapi';
 
@@ -14,9 +14,9 @@ import { InterfaceApi } from '../interfaces/iapi';
 export class Tab1Page implements OnInit {
 
   @ViewChild(IonInfiniteScroll, { static: true }) infiniteScroll: IonInfiniteScroll;
-  itemSearch: string;
   itemsFetchGithub: IGithubApi;
   itemsView;
+  itemSearch: string;
   countPage: number;
 
 
@@ -35,7 +35,6 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.itemSearch);
     this.itemSearch = 'Ruby';
     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
       this.itemsFetchGithub = data;
@@ -53,10 +52,6 @@ export class Tab1Page implements OnInit {
         this.itemsView = this.itemsFetchGithub.items;
       });
     }
-  }
-
-  onlink() {
-    console.log('OnLink');
   }
 
   onMark(item) {
