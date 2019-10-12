@@ -1,6 +1,6 @@
-import { InterfaceApi } from '../interfaces/iapi';
+import { InterfaceFavorite } from '../interfaces/iapi';
 
-export const InitialFavoriteData: Array<InterfaceApi> = [
+export const InitialFavoriteData: Array<InterfaceFavorite> = [
     {
         id: '',
         repositoryName: '',

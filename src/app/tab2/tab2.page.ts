@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { IGithubApi } from '../interfaces/github';
-import { InterfaceApi } from '../interfaces/iapi';
+import { InterfaceFavorite } from '../interfaces/iapi';
 import { InitialFavoriteData } from '../data/initialData';
 @Component({
   selector: 'app-tab2',
@@ -9,7 +8,7 @@ import { InitialFavoriteData } from '../data/initialData';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-  itemsFavorite = InitialFavoriteData as Array<InterfaceApi>;
+  itemsFavorite = InitialFavoriteData as Array<InterfaceFavorite>;
 
   constructor(private apiService: ApiService) {
   }
@@ -21,6 +20,7 @@ export class Tab2Page implements OnInit {
   }
 
   onDelete(id: string) {
+    console.log(id);
     this.apiService.deleteFavoriteItem(id).subscribe(data => {
       console.log(data);
     });

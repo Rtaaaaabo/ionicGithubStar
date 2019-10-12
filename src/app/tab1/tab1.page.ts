@@ -39,7 +39,6 @@ export class Tab1Page implements OnInit {
     this.githubService.fetchItemsGithub(this.itemSearch, this.countPage).subscribe(data => {
       this.itemsFetchGithub = data;
       this.itemsView = this.itemsFetchGithub.items;
-      console.log(this.itemsView);
     });
   }
 
