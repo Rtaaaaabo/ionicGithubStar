@@ -1,9 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GithubApiService } from '../services/github-api.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
-import { map, merge, mergeMap } from 'rxjs/operators';
+import { ApiService } from '../services/api.service';
+import { IonInfiniteScroll } from '@ionic/angular';
 import { IGithubApi } from '../interfaces/github';
+import { InterfaceApi } from '../interfaces/iapi';
 
 @Component({
   selector: 'app-tab1',
@@ -21,6 +22,7 @@ export class Tab1Page implements OnInit {
 
   constructor(
     private githubService: GithubApiService,
+    private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -57,8 +59,20 @@ export class Tab1Page implements OnInit {
     console.log('OnLink');
   }
 
-  onMark() {
-    console.log('OnMark');
+  onMark(item) {
+    const postData: InterfaceApi = {
+      repositoryName: item.name,
+      url: item.html_url,
+      description: item.description,
+      language: item.language,
+      ownerAvatorUrl: item.owner.avatar_url,
+      ownerLoginName: item.owner.login
+    };
+    console.log(postData);
+    this.apiService.postFavoriteItem(postData).subscribe(
+      (data) => console.log(data),
+      (error) => console.log('error: ', error)
+    );
   }
 
   loadItems(ev) {
