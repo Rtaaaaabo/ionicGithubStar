@@ -15,11 +15,7 @@ export class Tab2Page implements OnInit {
   }
 
   ngOnInit() {
-    console.log('First View');
-    this.apiService.fetchFavoriteItems().subscribe((items) => {
-      this.itemsFavorite = items;
-      console.log(this.itemsFavorite);
-    });
+    this.fetchFavoriteItems();
   }
 
   onDelete(id: string) {
@@ -29,6 +25,15 @@ export class Tab2Page implements OnInit {
           this.itemsFavorite.splice(i, 1);
         }
       }
+    });
+  }
+  ionViewWillEnter() {
+    this.fetchFavoriteItems();
+  }
+
+  fetchFavoriteItems() {
+    this.apiService.fetchFavoriteItems().subscribe((items) => {
+      this.itemsFavorite = items;
     });
   }
 }
