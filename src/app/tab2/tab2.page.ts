@@ -21,8 +21,13 @@ export class Tab2Page implements OnInit {
 
   onDelete(id: string) {
     console.log(id);
-    this.apiService.deleteFavoriteItem(id).subscribe(data => {
-      console.log(data);
+    this.apiService.deleteFavoriteItem(id).subscribe(() => {
+      for (let i = 0; i < this.itemsFavorite.length; i++) {
+        if (this.itemsFavorite[i].id === id) {
+          this.itemsFavorite.splice(i, 1);
+        }
+      }
+      console.log(this.itemsFavorite);
     });
   }
 }
