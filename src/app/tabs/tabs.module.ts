@@ -14,4 +14,4 @@ import { TabsPage } from './tabs.page';
   ],
   declarations: [TabsPage]
 })
-export class TabsPageModule {}
+export class TabsPageModule { }
