@@ -1,4 +1,5 @@
 export interface InterfaceApi {
+    id: string;
     repositoryName: string;
     url: string;
     description: string;
